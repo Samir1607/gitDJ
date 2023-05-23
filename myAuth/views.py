@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.views.generic import View
-from django.contrib.auth import authenticate, login, logout as auth_logout
+from django.contrib.auth import authenticate, login, logout as auth_logout, logout
 from django.contrib import messages
 
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -96,27 +96,10 @@ def user_login(request):
     return render(request, "myAuth/login.html")
 
 
-# def user_logout(request):
-#     logout(request)
-#     messages.success(request, "Logged out successfully...!")
-#     return redirect("/auth/login/")
-
-
-# def user_logout(request):
-#     if request.method == "POST":
-#         auth_logout(request)
-#         messages.success(request, "Logged out successfully...!")
-#         return redirect("/auth/login/")
-#     return HttpResponse(status=405)  # Return 405 Method Not Allowed if accessed via GET
-
-
 def user_logout(request):
-    if request.method == "POST":
-        auth_logout(request)
-        messages.success(request, "Logged out successfully...!")
-        return redirect("/auth/login/")
-    else:
-        return render(request, "myApp/index.html")
+    logout(request)
+    messages.success(request, "Logged out successfully...!")
+    return redirect("/auth/login/")
 
 
 class ActivateAccountView(View):
