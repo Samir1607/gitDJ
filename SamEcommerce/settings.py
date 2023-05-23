@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-w!2h(nitrj7p8186nvd72(2+n89g=88i*z_7$k4k190#whq*=y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,7 +125,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MESSAGE_TAGS = { messages.ERROR: 'danger'}
 
@@ -136,3 +136,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
